@@ -76,6 +76,7 @@ module RemoteStorage
 
       object.reload
       timestamp = object.last_modified.to_i
+      p "stored object #{user}:#{directory}:#{key} (timestamp #{timestamp})"
       create_missing_directory_objects(user, directory, timestamp)
       update_directory_object(user, directory, timestamp)
     rescue ::Riak::HTTPFailedRequest
@@ -190,6 +191,7 @@ module RemoteStorage
     end
 
     def update_directory_object(user, directory, timestamp)
+      p "updating directory object #{user}:#{directory} (timestamp #{timestamp})"
       if directory.match /\//
         parent_directory = directory[0..directory.rindex("/")-1]
       elsif directory != ""
