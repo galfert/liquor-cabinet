@@ -182,8 +182,6 @@ describe "Directories" do
           directory.content_type = "text/plain"
           directory.data = 2.seconds.ago.to_i.to_s
           directory.store
-          p "dir object timestamp before update: #{directory.data}"
-          p directory_bucket.props
         end
 
         it "updates the timestamp of the directory" do
@@ -192,10 +190,7 @@ describe "Directories" do
           last_response.status.must_equal 200
 
           object = data_bucket.get("jimmy:tasks/home:trash")
-          p "object timestamp: #{object.last_modified.to_i}"
-
           directory = directory_bucket.get("jimmy:tasks/home", {:r => 3})
-          p "dir object timestamp after update: #{directory.data}"
 
           directory.data.to_i.must_equal object.last_modified.to_i
         end
