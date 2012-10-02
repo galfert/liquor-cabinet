@@ -190,7 +190,7 @@ describe "Directories" do
           last_response.status.must_equal 200
 
           object = data_bucket.get("jimmy:tasks/home:trash")
-          directory = directory_bucket.get("jimmy:tasks/home", {:r => 3})
+          directory = directory_bucket.get("jimmy:tasks/home")
 
           directory.data.to_i.must_equal object.last_modified.to_i
         end
