@@ -183,6 +183,7 @@ describe "Directories" do
           @directory.data = 2.seconds.ago.to_i.to_s
           @directory.store
           p "dir object timestamp before update: #{@directory.data}"
+          p directory_bucket.props
         end
 
         it "updates the timestamp of the directory" do
