@@ -5,4 +5,4 @@ rvm:
 services: riak
 before_script:
   - cp config.yml.example config.yml
-script: rake test
+script: ruby spec/directories_spec.rb -n test_0001_updates_the_timestamp_of_the_directory
